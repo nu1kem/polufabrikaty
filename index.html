@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Домашние полуфабрикаты</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff8f0;
+            color: #3b2416;
+        }
+
+
+        /* ВЕРХНЕЕ МЕНЮ */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            box-shadow:
+                0 3px 15px rgba(80, 40, 10, 0.12);
+
+            padding: 15px 10px;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #713810;
+            text-decoration: none;
+
+            font-size: 16px;
+            font-weight: 900;
+
+            padding: 10px 15px;
+            border-radius: 12px;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            background: #fff0dc;
+            transform: translateY(-2px);
+        }
+
+
+        /* ГЛАВНЫЙ ЭКРАН */
+
+        .hero {
+            background: linear-gradient(
+                135deg,
+                #fff0dc,
+                #fffaf4
+            );
+
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .hero-text {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .hero h1 {
+            margin: 0;
+
+            font-size: 42px;
+            font-weight: 900;
+
+            color: #7a3e16;
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+
+
+        /* ОБЩИЕ РАЗДЕЛЫ */
+
+        .section {
+            padding: 45px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+
+            font-size: 32px;
+            color: #7a3e16;
+            font-weight: 900;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* ТОВАРЫ */
+
+        .products {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+
+            border-radius: 22px;
+            overflow: hidden;
+
+            box-shadow:
+                0 6px 20px rgba(80, 40, 10, 0.12);
+
+            transition: 0.25s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 240px;
+
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-content {
+            padding: 22px;
+        }
+
+        .product h3 {
+            font-size: 25px;
+
+            margin:
+                0 0 10px;
+
+            color: #713810;
+        }
+
+        .product p {
+            font-size: 17px;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+
+        /* ЦЕНА */
+
+        .price {
+            color: #c45a18;
+
+            font-size: 19px !important;
+            font-weight: 900 !important;
+        }
+
+
+        /* ВЫБОР КОЛИЧЕСТВА */
+
+        .quantity-title {
+            font-size: 17px;
+            font-weight: 900;
+
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .quantity {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 12px 0;
+        }
+
+        .quantity button {
+            width: 45px;
+            height: 45px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #7a3e16;
+            color: white;
+
+            font-size: 28px;
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .quantity button:hover {
+            background: #5f2e10;
+            transform: scale(1.05);
+        }
+
+        .quantity-value {
+            min-width: 80px;
+
+            font-size: 20px;
+            font-weight: 900;
+
+            text-align: center;
+        }
+
+        .total {
+            font-size: 20px;
+
+            color: #7a3e16;
+
+            font-weight: 900;
+
+            margin-top: 10px;
+        }
+
+
+        /* ДРУГИЕ ПОЛУФАБРИКАТЫ */
+
+        .other {
+            background: white;
+
+            border-radius: 22px;
+            padding: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 6px 20px rgba(80, 40, 10, 0.10);
+        }
+
+        .other-icon {
+            font-size: 45px;
+        }
+
+        .other p {
+            font-size: 18px;
+
+            font-weight: 600;
+
+            line-height: 1.6;
+        }
+
+
+        /* ПОЧЕМУ ИМЕННО МЫ */
+
+        .why {
+            background: #7a3e16;
+            color: white;
+
+            padding: 55px 20px;
+        }
+
+        .why-title {
+            text-align: center;
+
+            font-size: 34px;
+            font-weight: 900;
+
+            margin-bottom: 35px;
+        }
+
+        .advantages {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(210px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+        .advantage {
+            background:
+                rgba(255,255,255,0.12);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.18);
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            text-align: center;
+        }
+
+        .advantage-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .advantage h3 {
+            font-size: 21px;
+            margin: 8px 0;
+        }
+
+        .advantage p {
+            font-size: 15px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+
+        /* АДРЕС */
+
+        .info {
+            background: white;
+
+            border-radius: 22px;
+            padding: 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 6px 20px
+                rgba(80, 40, 10, 0.10);
+        }
+
+        .info p {
+            font-size: 18px;
+            font-weight: 700;
+
+            margin: 12px;
+        }
+
+
+        /* ЗАКАЗ */
+
+        .order-section {
+            text-align: center;
+
+            padding: 55px 20px;
+
+            background: #fff0dc;
+        }
+
+        .order-section h2 {
+            color: #7a3e16;
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+        .order-section p {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .order {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            background: #25D366;
+            color: white;
+
+            padding: 17px 30px;
+
+            border-radius: 15px;
+
+            text-decoration: none;
+
+            font-size: 19px;
+            font-weight: 900;
+
+            box-shadow:
+                0 5px 15px
+                rgba(37,211,102,0.3);
+
+            transition: 0.2s;
+
+            cursor: pointer;
+        }
+
+        .order:hover {
+            transform: scale(1.04);
+
+            background: #1ebe5d;
+        }
+
+
+        /* ПОДВАЛ */
+
+        footer {
+            background: #3b2416;
+            color: white;
+
+            text-align: center;
+
+            padding: 25px 15px;
+        }
+
+        footer p {
+            margin: 7px;
+            font-weight: 600;
+        }
+
+
+        /* ТЕЛЕФОН */
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .section-title {
+                font-size: 27px;
+            }
+
+            .why-title {
+                font-size: 28px;
+            }
+
+            .product img {
+                height: 220px;
+            }
+
+            nav a {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ВЕРХНЕЕ МЕНЮ -->
+
+    <nav>
+
+        <div class="nav-container">
+
+            <a href="#home">
+                🏠 Главная
+            </a>
+
+            <a href="#products">
+                🥟 Продукты
+            </a>
+
+            <a href="#why">
+                ❤️ Почему мы?
+            </a>
+
+            <a href="#address">
+                📍 Адрес
+            </a>
+
+            <a href="#order">
+                📱 Заказать
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ГЛАВНАЯ -->
+
+    <header
+        class="hero"
+        id="home">
+
+        <div class="hero-text">
+
+            <h1>
+                🥟 Домашние полуфабрикаты
+            </h1>
+
+            <p>
+                Вкусная домашняя еда,
+                приготовленная с заботой ❤️
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ПРОДУКТЫ -->
+
+    <section
+        class="section"
+        id="products">
+
+        <h2 class="section-title">
+            🥟 Наши продукты
+        </h2>
+
+
+        <div class="products">
+
+
+            <!-- ПЕЛЬМЕНИ -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.pexels.com/photos/8601685/pexels-photo-8601685.jpeg"
+                    alt="Домашние пельмени">
+
+                <div class="product-content">
+
+                    <h3>
+                        🥟 Пельмени
+                    </h3>
+
+                    <p>
+                        Домашние пельмени
+                        ручной лепки.
+                    </p>
+
+                    <p class="price">
+                        2500 ₸ / кг
+                    </p>
+
+
+                    <div class="quantity-title">
+                        Количество:
+                    </div>
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="changeQuantity('pelmeni', -500)">
+                            −
+                        </button>
+
+                        <div
+                            class="quantity-value"
+                            id="pelmeniQuantity">
+                            500 г
+                        </div>
+
+                        <button
+                            onclick="changeQuantity('pelmeni', 500)">
+                            +
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="total"
+                        id="pelmeniTotal">
+                        Итого: 1250 ₸
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ВАРЕНИКИ -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.pexels.com/photos/8601678/pexels-photo-8601678.jpeg"
+                    alt="Домашние вареники">
+
+                <div class="product-content">
+
+                    <h3>
+                        🥟 Вареники
+                    </h3>
+
+                    <p>
+                        Домашние вареники
+                        ручной лепки.
+                    </p>
+
+                    <p class="price">
+                        2000 ₸ / кг
+                    </p>
+
+
+                    <div class="quantity-title">
+                        Количество:
+                    </div>
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="changeQuantity('vareniki', -500)">
+                            −
+                        </button>
+
+                        <div
+                            class="quantity-value"
+                            id="varenikiQuantity">
+                            500 г
+                        </div>
+
+                        <button
+                            onclick="changeQuantity('vareniki', 500)">
+                            +
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="total"
+                        id="varenikiTotal">
+                        Итого: 1000 ₸
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ДРУГИЕ ПОЛУФАБРИКАТЫ -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            🍽️ Другие полуфабрикаты
+        </h2>
+
+        <div class="other">
+
+            <div class="other-icon">
+                🍽️
+            </div>
+
+            <p>
+                У нас есть и другие домашние
+                полуфабрикаты.
+            </p>
+
+            <p>
+                Ассортимент и наличие
+                уточняйте при заказе.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ПОЧЕМУ ИМЕННО МЫ -->
+
+    <section
+        class="why"
+        id="why">
+
+        <h2 class="why-title">
+            ❤️ Почему именно мы?
+        </h2>
+
+
+        <div class="advantages">
+
+
+            <div class="advantage">
+
+                <div class="advantage-icon">
+                    🏠
+                </div>
+
+                <h3>
+                    Домашнее приготовление
+                </h3>
+
+                <p>
+                    Готовим с душой,
+                    как для своей семьи.
+                </p>
+
+            </div>
+
+
+
+            <div class="advantage">
+
+                <div class="advantage-icon">
+                    🥩
+                </div>
+
+                <h3>
+                    Качественные продукты
+                </h3>
+
+                <p>
+                    Используем свежие продукты
+                    для приготовления.
+                </p>
+
+            </div>
+
+
+
+            <div class="advantage">
+
+                <div class="advantage-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    С заботой
+                </h3>
+
+                <p>
+                    Каждый заказ готовится
+                    аккуратно и внимательно.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- АДРЕС -->
+
+    <section
+        class="section"
+        id="address">
+
+        <h2 class="section-title">
+            📍 Где мы находимся
+        </h2>
+
+        <div class="info">
+
+            <p>
+                📍 <strong>Адрес:</strong>
+                Гульдер 1
+            </p>
+
+            <p>
+                🚚 Работаем по городу Караганда
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ЗАКАЗ -->
+
+    <section
+        class="order-section"
+        id="order">
+
+        <h2>
+            📱 Хотите сделать заказ?
+        </h2>
+
+        <p>
+            Выберите нужное количество
+            и оформите заказ через WhatsApp.
+        </p>
+
+
+        <a
+            class="order"
+            href="#"
+            onclick="openWhatsApp(); return false;">
+
+            💬 Заказать в WhatsApp
+
+        </a>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            🥟 Домашние полуфабрикаты
+        </p>
+
+        <p>
+            Вкусно. Домашне. С заботой. ❤️
+        </p>
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        let quantities = {
+
+            pelmeni: 500,
+
+            vareniki: 500
+
+        };
+
+
+        const prices = {
+
+            pelmeni: 2500,
+
+            vareniki: 2000
+
+        };
+
+
+        function changeQuantity(product, change) {
+
+            quantities[product] += change;
+
+
+            // Минимум 500 грамм
+
+            if (quantities[product] < 500) {
+
+                quantities[product] = 500;
+
+            }
+
+
+            updateQuantity(product);
+
+        }
+
+
+        function updateQuantity(product) {
+
+            const grams =
+                quantities[product];
+
+
+            const kilograms =
+                grams / 1000;
+
+
+            const total =
+                prices[product] *
+                kilograms;
+
+
+            document.getElementById(
+                product + "Quantity"
+            ).textContent =
+                grams + " г";
+
+
+            document.getElementById(
+                product + "Total"
+            ).textContent =
+                "Итого: " +
+                total +
+                " ₸";
+
+        }
+
+
+        function openWhatsApp() {
+
+            const pelmeniGrams =
+                quantities.pelmeni;
+
+            const varenikiGrams =
+                quantities.vareniki;
+
+
+            const pelmeniKg =
+                pelmeniGrams / 1000;
+
+            const varenikiKg =
+                varenikiGrams / 1000;
+
+
+            const pelmeniTotal =
+                prices.pelmeni *
+                pelmeniKg;
+
+            const varenikiTotal =
+                prices.vareniki *
+                varenikiKg;
+
+
+            const total =
+                pelmeniTotal +
+                varenikiTotal;
+
+
+            const text =
+                "Здравствуйте! Хочу заказать полуфабрикаты.%0A%0A" +
+
+                "🥟 Пельмени: " +
+                pelmeniGrams +
+                " г — " +
+                pelmeniTotal +
+                " ₸%0A" +
+
+                "🥟 Вареники: " +
+                varenikiGrams +
+                " г — " +
+                varenikiTotal +
+                " ₸%0A%0A" +
+
+                "💰 Итого: " +
+                total +
+                " ₸";
+
+
+            const url =
+                "https://wa.me/77711857001?text="
+                + encodeURIComponent(
+                    decodeURIComponent(text)
+                );
+
+
+            window.open(
+                url,
+                "_blank"
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
